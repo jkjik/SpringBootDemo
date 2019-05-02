@@ -1,0 +1,45 @@
+server:
+  port: 8888
+  tomcat:
+    max-connections: 110
+    max-threads: 100
+
+ip: 192.168.10.200
+
+spring:
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: true
+  application:
+    name: secondTest
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${ip}:3366/chenjie2?useSSL=false&verifyServerCertificate=false&useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: root
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /
+
+#ribbon:
+#  ReadTimeout: 20000
+#  ConnectTimeout: 20000
+#
+#eureka:
+#  instance:
+#    instance-id: ${eureka.instance.ip-address}:${server.port}
+#    prefer-ip-address: true #使用IP注册
+#    ip-address: ${ip}
+#  client:
+#    service-url:
+#      defaultZone: http://admin:admin@${ip}:1025/eureka
+#      service-id: virtualNumberAdministrate
